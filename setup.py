@@ -52,10 +52,10 @@ EXTRAS = {
 setup(
     name=MODULE_NAME,
     version=MODULE_VER,
-    url="REPLACEME",
-    license="MPL 2.0",
-    author="REPLACEME",
-    author_email="REPLACEME",
+    url="https://github.com/nth10sd/innanzi",
+    license="MIT",
+    author="Gary Kwong",
+    author_email="nth10sd@gmail.com",
     description="Bootstrap a project easily",
     # long_description=read("README.rst"),
     # entry_points={
@@ -76,7 +76,7 @@ setup(
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
         "Intended Audience :: Developers",
-        "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",
+        "License :: OSI Approved :: MIT License",
         "Operating System :: POSIX",
         "Operating System :: Unix",
         "Programming Language :: Python",
