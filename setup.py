@@ -31,7 +31,7 @@ EXTRAS = {
     "test": [
         "black ~= 20.8b1",
         "coverage ~= 5.5",
-        "flake8==3.9.0",
+        "flake8==3.9.1",
         "flake8-bugbear ~= 21.4.3",
         "flake8-commas ~= 2.0.0",
         "flake8-comprehensions ~= 3.4.0",
