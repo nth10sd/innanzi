@@ -76,7 +76,6 @@ def main() -> None:
     # Weight of the rest of the world, excluding specific countries above
     remaining = total_pct - country_1_weight - country_2_weight
     RUN_LOG.info("%s: %s", f'{"Rest of World": >13}', f"{remaining / total_pct:.3%}")
-    RUN_LOG.info("%s: %s", f'{"Total": >13}', f"{total_pct / 100:.3%}")
 
 
 main()
