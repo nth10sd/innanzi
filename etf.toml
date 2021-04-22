@@ -1,0 +1,5 @@
+title = "ETFs"
+
+[NYSEARCA_AVDV]
+url = "https://www.avantisinvestors.com/content/avantis/en/investments/avantis-international-small-cap-value-etf.html"
+holdings = "https://www.americancentury.com/ms/edge/api/fund/fundData/avantis_etf/productDetails?fund=120&fmt=csv&type=holdings"
