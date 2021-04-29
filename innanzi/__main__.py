@@ -65,7 +65,7 @@ def main() -> None:
     # Calculate the total weight of all countries
     etf_sub = etf[["WEIGHT", "COUNTRY"]][7:].copy()
     etf_sub["WEIGHT"] = etf_sub["WEIGHT"].map(lambda x: float(x.removesuffix("%")))
-    total_pct = float(etf_sub.sum())
+    total_pct = float(etf_sub["WEIGHT"].sum())
 
     # Weight of specific countries
     country_1 = "CANADA"
