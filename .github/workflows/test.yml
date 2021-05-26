@@ -102,3 +102,7 @@ jobs:
     - name: Run package
       run: |
         python -u -m innanzi
+
+    - uses: codecov/codecov-action@v1
+      with:
+        fail_ci_if_error: true # optional (default = false)
