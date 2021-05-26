@@ -72,6 +72,7 @@ setup(
     },
     install_requires=[
         "pandas ~= 1.2.4",
+        "toml ~= 0.10.2",
     ],
     extras_require=EXTRAS,
     python_requires=">= 3.9",
