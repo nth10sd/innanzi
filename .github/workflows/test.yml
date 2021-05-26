@@ -65,7 +65,22 @@ jobs:
           ${{ runner.os }}-pip-
 
     - name: Install OS prerequisites
+      if: startsWith(runner.os, 'Linux')
       run: sudo apt-get install ripgrep
+    - name: Search for existing linter ignore lines in Python
+      if: startsWith(runner.os, 'Linux')
+      run: |
+        rg -t py --stats "(?:(?:flake8|noqa|pylint|type): *(?:disable|ignore|noqa|[A-Z][0-9][0-9][0-9])| Any|REPLACEME)" \
+          $(find . -type f -name "*.py" ! -name "conf_correct.py") || true
+    - name: Ensure we are not increasing the number of ignore lines as a guideline
+      if: startsWith(runner.os, 'Linux')
+      run: |
+        if [ $(rg -t py --stats \
+                  "(?:(?:flake8|noqa|pylint|type): *(?:disable|ignore|noqa|[A-Z][0-9][0-9][0-9])| Any|REPLACEME)" \
+                  $(find . -type f -name "*.py" ! -name "conf_correct.py") \
+                    | awk '/ matches/ && !/ contained matches/' \
+                    | cut -d' ' -f1) -lt 1 ] ;
+        then exit 0 ; else exit 1 ; fi ;
 
     - name: Install dependencies
       if: steps.cache.outputs.cache-hit != 'true'
