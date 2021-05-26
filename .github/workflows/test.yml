@@ -83,7 +83,7 @@ jobs:
       run: python -u -m vulture innanzi/ tests/ .vulture_allowlist
     - name: Run tools using pytest
       run: |
-        pytest --bandit --black --flake8 --mypy --pylint -m "not slow" --cov --cov-report term-missing --no-cov-on-fail --cov-fail-under=30
+        pytest --bandit --black --flake8 --mypy --pylint -m "not slow" --cov --cov-report term-missing --no-cov-on-fail --cov-fail-under=10
     - name: Run package
       run: |
         python -u -m innanzi
