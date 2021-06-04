@@ -104,5 +104,6 @@ jobs:
         python -u -m innanzi
 
     - uses: codecov/codecov-action@v1
+      continue-on-error: true  # codecov limits number of uploads allowed for each commit
       with:
-        fail_ci_if_error: true # optional (default = false)
+        fail_ci_if_error: true  # optional (default = false)
