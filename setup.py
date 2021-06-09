@@ -25,7 +25,7 @@ with open(
 EXTRAS = {
     "test": [
         "bandit ~= 1.7.0",
-        "black ~= 21.5b1",
+        "black ~= 21.5b2",
         "coverage ~= 5.5",
         "flake8 ~= 3.9.2",
         "flake8-bugbear ~= 21.4.3",
@@ -35,13 +35,13 @@ EXTRAS = {
         "flake8-print ~= 4.0.0",
         "flake8-quotes ~= 3.2.0",
         "isort ~= 5.8.0",
-        "mypy==0.812",
+        "mypy==0.901",
         "pep8-naming ~= 0.11.1",
-        "pylint ~= 2.8.2",
+        "pylint ~= 2.8.3",
         "pytest ~= 6.2.4",
         "pytest-bandit ~= 0.6.1",
         "pytest-black ~= 0.3.12",
-        "pytest-cov ~= 2.12.0",
+        "pytest-cov ~= 2.12.1",
         "pytest-dependency ~= 0.5.1",
         "pytest-flake8 ~= 1.0.7",
         "pytest-mypy ~= 0.8.1",
@@ -69,9 +69,10 @@ setup(
             "py.typed",
         ],
     },
-    install_requires=[
+    install_requires=[  # Include corresponding types-* package, e.g. types-toml & toml
         "pandas ~= 1.2.4",
         "toml ~= 0.10.2",
+        "types-toml ~= 0.1.1",
     ],
     extras_require=EXTRAS,
     python_requires=">= 3.9",
