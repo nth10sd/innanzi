@@ -101,7 +101,7 @@ jobs:
       run: pushd docs/ && ./gen-sphinx-html.sh ; git clean -fd ; popd
     - name: Run tools using pytest
       run: |
-        pytest --bandit --black --flake8 --mypy --pylint -m "not slow" --cov --cov-report term-missing --no-cov-on-fail --cov-fail-under=10
+        pytest --bandit --black --flake8 --mypy --pylint -m "not slow" --cov --no-cov-on-fail
     - name: Run package
       run: |
         python -u -m innanzi
