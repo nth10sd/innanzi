@@ -2,6 +2,8 @@
 requires = ["setuptools >= 57.0.0", "wheel >= 0.36.2"]
 build-backend = "setuptools.build_meta"
 
+# Update packages that do not have types in [[tool.mypy.overrides]]
+
 # When bumping minimum supported Python version, update:
 #   GitHub Actions settings file to also test the desired version
 #   setup.py, both install_requires and the classifiers
