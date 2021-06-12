@@ -69,7 +69,7 @@ setup(
             "py.typed",
         ],
     },
-    install_requires=[  # Include corresponding types-* package, e.g. types-toml & toml
+    install_requires=[  # Include relevant types-* package, e.g. types-toml & toml
         "pandas ~= 1.2.4",
         "toml ~= 0.10.2",
         "types-toml ~= 0.1.1",
