@@ -58,12 +58,16 @@ def main() -> None:
     )
 
     # Retrieve date from CSV file
-    data_date = etf[etf["COMPANY"] == "As of"]["TICKER"].iloc[0]
+    data_date = etf[  # pylint: disable=unsubscriptable-object
+        etf["COMPANY"] == "As of"  # pylint: disable=unsubscriptable-object
+    ]["TICKER"].iloc[0]
     data_date = datetime.strptime(data_date, "%m/%d/%Y").strftime("%Y-%m-%d %a")
     RUN_LOG.info("%s: %s", f'{"Date": >13}', data_date)
 
     # Calculate the total weight of all countries
-    etf_sub = etf[["WEIGHT", "COUNTRY"]][7:].copy()
+    etf_sub = etf[["WEIGHT", "COUNTRY"]][  # pylint: disable=unsubscriptable-object
+        7:
+    ].copy()
     etf_sub["WEIGHT"] = etf_sub["WEIGHT"].map(lambda x: float(x.removesuffix("%")))
     total_pct = float(etf_sub["WEIGHT"].sum())
 
