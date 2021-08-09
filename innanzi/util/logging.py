@@ -30,4 +30,5 @@ def get_logger(
 
     logger = logging.getLogger(name)
     logger.addHandler(handler)
+    logger.propagate = False
     return logger
