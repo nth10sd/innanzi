@@ -33,7 +33,7 @@ def get_weight(
 
 def main() -> None:
     """Main function"""
-    with open("etf.toml") as f:
+    with open("etf.toml", encoding="utf-8", errors="surrogateescape") as f:
         etf_data = toml.load(f)
 
     RUN_LOG.info("Retrieving from: %s", etf_data["NYSEARCA_AVDV"]["holdings"])
