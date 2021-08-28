@@ -101,12 +101,15 @@ jobs:
       run: pushd docs/ && ./gen-sphinx-html.sh ; git clean -fd ; popd
     - name: Run tools using pytest
       run: |
-        python -u -m pytest --bandit --black --cov --flake8 --mypy --pylint -m "not slow"
+        python -u -m pytest --bandit --black --cov --flake8 --mypy --pylint --cov-report=term-missing --cov-report=xml
     - name: Run package
       run: |
         python -u -m innanzi
 
-    - uses: codecov/codecov-action@v1
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v2
       continue-on-error: true  # codecov limits number of uploads allowed for each commit
       with:
+        env_vars: OS,PYTHON
         fail_ci_if_error: true  # optional (default = false)
+        verbose: true
