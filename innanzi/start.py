@@ -59,7 +59,7 @@ def main() -> None:
 
     # Retrieve date from CSV file
     data_date = etf[  # pylint: disable=unsubscriptable-object,useless-suppression
-        etf["COMPANY"] == "As of"  # pylint: disable=unsubscriptable-object
+        etf["COMPANY"] == "As of"
     ]["TICKER"].iloc[0]
     data_date = datetime.strptime(data_date, "%m/%d/%Y").strftime("%Y-%m-%d %a")
     RUN_LOG.info("%s: %s", f'{"Date": >13}', data_date)
