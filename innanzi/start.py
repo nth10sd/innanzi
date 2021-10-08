@@ -40,7 +40,7 @@ def main() -> None:
     # Read data
     etf = pd.read_csv(
         etf_data["NYSEARCA_AVDV"]["holdings"],
-        error_bad_lines=False,
+        on_bad_lines="warn",
         names=[
             "COMPANY",
             "TICKER",
