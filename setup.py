@@ -81,7 +81,7 @@ setup(
         "pandas-stubs ~= 1.2.0.19",
         "toml ~= 0.10.2",
         "types-setuptools ~= 57.4.0",
-        "types-toml ~= 0.1.1",
+        "types-toml ~= 0.10.1",  # Temporarily for infrastructure stuff of some packages
     ],
     extras_require=EXTRAS,
     python_requires=">= 3.9",
