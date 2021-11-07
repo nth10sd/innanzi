@@ -5,6 +5,7 @@ from __future__ import annotations
 from datetime import datetime
 from logging import INFO as INFO_LOG_LEVEL
 
+import numpy as np
 import pandas as pd
 import toml
 
@@ -41,19 +42,21 @@ def main() -> None:
     etf = pd.read_csv(
         etf_data["NYSEARCA_AVDV"]["holdings"],
         on_bad_lines="warn",
-        names=[
-            "COMPANY",
-            "TICKER",
-            "CUSIP",
-            "ISIN",
-            "SEDOL",
-            "SHARES/PRINCIPAL/NOTIONAL AMOUNT",
-            "CONTRACT COUNT",
-            "MARKET VALUE ($)",
-            "WEIGHT",
-            "SECTOR",
-            "COUNTRY",
-        ],
+        names=np.array(
+            [
+                "COMPANY",
+                "TICKER",
+                "CUSIP",
+                "ISIN",
+                "SEDOL",
+                "SHARES/PRINCIPAL/NOTIONAL AMOUNT",
+                "CONTRACT COUNT",
+                "MARKET VALUE ($)",
+                "WEIGHT",
+                "SECTOR",
+                "COUNTRY",
+            ]
+        ),
         sep=",",
     )
 
