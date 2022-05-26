@@ -80,7 +80,7 @@ setup(
         ],
     },
     install_requires=[  # Include relevant types-* package, e.g. types-toml & toml
-        "pandas ~= 1.3.3",
+        "pandas ~= 1.4.2",
         "pandas-stubs ~= 1.2.0.58",
         "toml ~= 0.10.2",
         "setuptools >= 60.0.5",
