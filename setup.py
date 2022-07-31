@@ -43,6 +43,7 @@ EXTRAS = {
         "flynt ~= 0.76",
         "isort ~= 5.10.1",
         "mypy==0.971",
+        "pandas-vet ~= 0.2.3",
         "pep8-naming ~= 0.13.0",
         "pylint ~= 2.14.1",
         "pytest ~= 7.1.2",
