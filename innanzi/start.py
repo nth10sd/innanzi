@@ -27,7 +27,7 @@ def get_weight(
     :param country: Desired country
     :return: Weight of country
     """
-    weight = float(d_frame[d_frame["COUNTRY"] == country]["WEIGHT"].apply(float).sum())
+    weight = float(d_frame[d_frame.COUNTRY == country]["WEIGHT"].apply(float).sum())
     RUN_LOG.info("%s: %s", f"{country.title(): >13}", f"{weight / total_pct:.3%}")
     return weight
 
