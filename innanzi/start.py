@@ -27,7 +27,9 @@ def get_weight(
     :return: Weight of country
     """
     weight = float(
-        pd.Series(d_frame[d_frame.COUNTRY == country]["WEIGHT"].apply(float).sum())[0]
+        pd.Series(
+            d_frame[d_frame.COUNTRY.str.contains(country)]["WEIGHT"].apply(float).sum()
+        )[0]
     )
     RUN_LOG.info("%s: %s", f"{country.title(): >13}", f"{weight / total_pct:.3%}")
     return weight
