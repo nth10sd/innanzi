@@ -124,7 +124,7 @@ jobs:
       run: python -u -m pytype --config=pytype.cfg
     - name: Run tools using pytest
       run: |
-        python -u -m pytest --bandit --black --cov --flake8 --mypy --pylint --cov-report=term-missing --cov-report=xml
+        python -u -m pytest --bandit --black --cov --flake8 --mypy --pylint
 
     # CodeQL analysis section START
     # Linux-only, enable on GitHub for public repos and private repos on Enterprise plan with Advanced Security
