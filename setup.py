@@ -93,8 +93,10 @@ setup(
     install_requires=[
         "pandas ~= 1.5.0",
         "pandas-stubs==1.5.0.220926",
-        "toml ~= 0.10.2",
+        "requests ~= 2.28.1",
         "setuptools >= 60.0.5",
+        "toml ~= 0.10.2",
+        "types-requests ~= 2.28.11.5",
         "types-setuptools==65.3.0",  # Bump types-* only with mypy
         'types-toml==0.10.8; python_version <= "3.10"',
         "wheel >= 0.37.0",

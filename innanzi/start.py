@@ -4,8 +4,11 @@ from __future__ import annotations
 
 from datetime import datetime
 from logging import INFO as INFO_LOG_LEVEL
+from pathlib import Path
+import tempfile
 
 import pandas as pd
+import requests
 import toml
 
 from innanzi.util.logging import get_logger
@@ -43,25 +46,30 @@ def main() -> None:
         etf_data = toml.load(f)
 
     RUN_LOG.info("Retrieving from: %s", etf_data["NYSEARCA_AVDV"]["holdings"])
-    # Read data
-    etf = pd.read_csv(
-        etf_data["NYSEARCA_AVDV"]["holdings"],
-        on_bad_lines="warn",
-        names=[
-            "COMPANY",
-            "TICKER",
-            "CUSIP",
-            "ISIN",
-            "SEDOL",
-            "SHARES/PRINCIPAL/NOTIONAL AMOUNT",
-            "CONTRACT COUNT",
-            "MARKET VALUE ($)",
-            "WEIGHT",
-            "SECTOR",
-            "COUNTRY",
-        ],
-        sep=",",
-    )
+
+    req = requests.get(etf_data["NYSEARCA_AVDV"]["holdings"])
+    with tempfile.TemporaryDirectory() as tmpdirname:
+        with open(Path(tmpdirname) / "holdings.csv", "wb") as f:
+            f.write(req.content)  # Save holdings data
+
+        etf = pd.read_csv(  # Read holdings data
+            Path(tmpdirname) / "holdings.csv",
+            on_bad_lines="warn",
+            names=[
+                "COMPANY",
+                "TICKER",
+                "CUSIP",
+                "ISIN",
+                "SEDOL",
+                "SHARES/PRINCIPAL/NOTIONAL AMOUNT",
+                "CONTRACT COUNT",
+                "MARKET VALUE ($)",
+                "WEIGHT",
+                "SECTOR",
+                "COUNTRY",
+            ],
+            sep=",",
+        )
 
     # Retrieve date from CSV file
     data_date = etf[etf["COMPANY"] == "As of"]["TICKER"].iloc[0]
