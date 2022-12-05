@@ -47,7 +47,7 @@ def main() -> None:
 
     RUN_LOG.info("Retrieving from: %s", etf_data["NYSEARCA_AVDV"]["holdings"])
 
-    req = requests.get(etf_data["NYSEARCA_AVDV"]["holdings"])
+    req = requests.get(etf_data["NYSEARCA_AVDV"]["holdings"], timeout=99)
     with tempfile.TemporaryDirectory() as tmpdirname:
         holdings_csv = Path(tmpdirname) / "holdings.csv"
         holdings_csv.write_bytes(req.content)  # Save holdings data
