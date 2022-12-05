@@ -49,11 +49,11 @@ def main() -> None:
 
     req = requests.get(etf_data["NYSEARCA_AVDV"]["holdings"])
     with tempfile.TemporaryDirectory() as tmpdirname:
-        with open(Path(tmpdirname) / "holdings.csv", "wb") as f:
-            f.write(req.content)  # Save holdings data
+        holdings_csv = Path(tmpdirname) / "holdings.csv"
+        holdings_csv.write_bytes(req.content)  # Save holdings data
 
         etf = pd.read_csv(  # Read holdings data
-            Path(tmpdirname) / "holdings.csv",
+            holdings_csv,
             on_bad_lines="warn",
             names=[
                 "COMPANY",
