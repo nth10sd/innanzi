@@ -96,7 +96,7 @@ setup(
         "requests ~= 2.28.1",
         "setuptools >= 65.6.3",
         'toml ~= 0.10.2; python_version <= "3.10"',
-        "types-requests==2.28.11.12.12",
+        "types-requests==2.28.11.12",
         "types-setuptools==67.2.0.1",  # Bump types-* only with mypy
         'types-toml==0.10.8.3; python_version <= "3.10"',
         "wheel >= 0.38.4",
