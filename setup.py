@@ -95,7 +95,7 @@ setup(
         "pandas-stubs==1.5.0.220926",
         "requests ~= 2.28.1",
         "setuptools >= 65.6.3",
-        "toml ~= 0.10.2",
+        'toml ~= 0.10.2; python_version <= "3.10"',
         "types-requests ~= 2.28.11.5",
         "types-setuptools==65.6.0.3",  # Bump types-* only with mypy
         'types-toml==0.10.8; python_version <= "3.10"',
