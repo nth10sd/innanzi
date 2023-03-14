@@ -165,6 +165,7 @@ bandit_targets = "innanzi"
 markers = [
     "slow",
 ]
+xfail_strict = true
 
 [tool.pytype]
 inputs = [
