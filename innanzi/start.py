@@ -42,7 +42,7 @@ def get_weight(
 
 def main() -> None:
     """Main function"""
-    with open("etf.toml", encoding="utf-8", errors="surrogateescape") as f:
+    with Path("etf.toml").open(encoding="utf-8", errors="surrogateescape") as f:
         etf_data = toml.load(f)
 
     RUN_LOG.info("Retrieving from: %s", etf_data["NYSEARCA_AVDV"]["holdings"])
@@ -73,7 +73,9 @@ def main() -> None:
 
     # Retrieve date from CSV file
     data_date = etf[etf["COMPANY"] == "As of"]["TICKER"].iloc[0]
-    data_date = datetime.strptime(data_date, "%m/%d/%Y").strftime("%Y-%m-%d %a")
+    data_date = (
+        datetime.strptime(data_date, "%m/%d/%Y").astimezone().strftime("%Y-%m-%d %a")
+    )
     RUN_LOG.info("%s: %s", f'{"Date": >13}', data_date)
 
     # Calculate the total weight of all countries
