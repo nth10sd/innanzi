@@ -99,8 +99,8 @@ setup(
         ],
     },
     install_requires=[
-        "pandas ~= 1.5.0",
-        "pandas-stubs==1.5.3.230203",
+        "pandas[performance] ~= 2.0.1",
+        "pandas-stubs==2.0.0.230412",
         "requests ~= 2.28.1",
         "setuptools >= 65.6.3",
         'toml ~= 0.10.2; python_version <= "3.10"',
