@@ -3,10 +3,12 @@
 from __future__ import annotations
 
 from logging import INFO as INFO_LOG_LEVEL
-
-import pytest
+from typing import TYPE_CHECKING
 
 from innanzi import start
+
+if TYPE_CHECKING:
+    import pytest
 
 
 def test_main(caplog: pytest.LogCaptureFixture) -> None:
