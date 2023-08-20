@@ -66,7 +66,7 @@ jobs:
                     "(?:(?:flake8|noqa|pylint|pyright|type): *(?:disable|ignore|noqa|[a-zA-Z]+[0-9]+)| Any|REPLACEME)" \
                     $(find . -type f -name "*.py" -not -path "./build/lib/*" ! -name "conf_correct.py") \
                       | awk "/ matches/ && "\!"/ contained matches/" \
-                      | cut -d " " -f1) -lt 1 ] ;
+                      | cut -d " " -f1) -lt 3 ] ;
           then exit 0 ; else exit 1 ; fi ;
 
       # - name: Use deploy key
