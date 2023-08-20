@@ -1,3 +1,7 @@
+## 2.0.2 (2023-08-20)
+
+1. Bump number of known ignore lines on CI
+
 ## 2.0.1 (2023-08-20)
 
 1. Fix all outstanding CI issues
