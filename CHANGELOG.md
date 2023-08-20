@@ -1,3 +1,7 @@
+## 2.0.3 (2023-08-20)
+
+1. Remove obsolete vulture ignore line
+
 ## 2.0.2 (2023-08-20)
 
 1. Bump number of known ignore lines on CI
