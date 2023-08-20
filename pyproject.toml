@@ -22,8 +22,8 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
 ]
 dependencies = [
-    "pandas[performance] ~= 2.0.1",
-    "pandas-stubs==2.0.0.230412",
+    "pandas[performance] ~= 2.0.3",
+    "pandas-stubs==2.0.2.230605",
     "requests ~= 2.31.0",
     "setuptools >= 68.0.0",
     "setuptools-scm[toml] >= 7.1.0",
