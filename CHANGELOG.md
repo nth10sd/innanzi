@@ -1,3 +1,7 @@
+## 2.0.4 (2023-08-20)
+
+1. Bump `pandas` to 2.0.3 and `pandas-stubs` to 2.0.2.230605
+
 ## 2.0.3 (2023-08-20)
 
 1. Remove obsolete vulture ignore line
