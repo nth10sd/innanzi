@@ -1,4 +1,4 @@
-"""Start running Innanzi"""
+"""Start running innanzi."""
 
 from __future__ import annotations
 
@@ -22,7 +22,7 @@ def get_weight(
     total_pct: float,
     country: str,
 ) -> float:
-    """Get the weight of a country in a dataset
+    """Get the weight of a country in a dataset.
 
     :param d_frame: Dataset
     :param total_pct: Total weighted percent of all countries
@@ -41,7 +41,7 @@ def get_weight(
 
 
 def main() -> None:
-    """Main function"""
+    """Start."""
     with Path("etf.toml").open(encoding="utf-8", errors="surrogateescape") as f:
         etf_data = toml.load(f)
 

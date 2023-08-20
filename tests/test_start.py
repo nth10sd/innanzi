@@ -1,4 +1,4 @@
-"""Tests for start.py"""
+"""Tests for start.py code."""
 
 # ruff: noqa: S101
 
