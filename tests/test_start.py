@@ -1,5 +1,7 @@
 """Tests for start.py"""
 
+# ruff: noqa: S101
+
 from __future__ import annotations
 
 from logging import INFO as INFO_LOG_LEVEL
