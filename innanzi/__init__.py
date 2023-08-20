@@ -1,7 +1,6 @@
 """Module details."""
 
+from pathlib import Path
+
 __title__ = "innanzi"
-__version__ = "1.0.1"
-__author__ = "Gary Kwong"
-__license__ = "MIT"
-__copyright__ = f"Copyright 2021-2023 {__author__}"
+__version__ = (Path(__file__).parent / "_version.txt").read_text(encoding="utf-8")

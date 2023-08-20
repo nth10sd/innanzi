@@ -1,0 +1,2 @@
+include innanzi/_version.txt
+include innanzi/py.typed
