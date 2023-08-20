@@ -1,3 +1,8 @@
+## 2.0.1 (2023-08-20)
+
+1. Fix all outstanding CI issues
+1. Bump vulture to 2.9
+
 ## 2.0.0 (2023-08-20)
 
 1. General Python package structure updated
