@@ -50,29 +50,11 @@ jobs:
           key: ${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}
           restore-keys: |
             ${{ runner.os }}-pip-
-
-      - name: Install OS prerequisites
-        if: startsWith(runner.os, 'Linux')
-        run: sudo apt-get update ; sudo apt-get install ripgrep
-      - name: Search for existing linter ignore lines in Python
-        if: startsWith(runner.os, 'Linux')
-        run: |
-          rg -t py --stats "(?:(?:flake8|noqa|pylint|pyright|type): *(?:disable|ignore|noqa|[a-zA-Z]+[0-9]+)| Any|REPLACEME)" \
-            $(find . -type f -name "*.py" -not -path "./build/lib/*" ! -name "conf_correct.py") || true
-      - name: Ensure we are not increasing the number of ignore lines as a guideline
-        if: startsWith(runner.os, 'Linux')
-        run: |
-          if [ $(rg -t py --stats \
-                    "(?:(?:flake8|noqa|pylint|pyright|type): *(?:disable|ignore|noqa|[a-zA-Z]+[0-9]+)| Any|REPLACEME)" \
-                    $(find . -type f -name "*.py" -not -path "./build/lib/*" ! -name "conf_correct.py") \
-                      | awk "/ matches/ && "\!"/ contained matches/" \
-                      | cut -d " " -f1) -lt 3 ] ;
-          then exit 0 ; else exit 1 ; fi ;
-
       # - name: Use deploy key
       #   uses: webfactory/ssh-agent@v0.7.0
       #   with:
       #       ssh-private-key: ${{ secrets.ZZBASE_TOKEN }}
+
       - name: Install pip prerequisites
         if: steps.pip-cache.outputs.cache-hit != 'true'
         run: python -u -m pip install --upgrade pip setuptools wheel ;
@@ -94,12 +76,6 @@ jobs:
 
       - name: Run with ruff
         run: python -u -m ruff .
-      - name: Run shellcheck
-        if: startsWith(runner.os, 'Linux')
-        run: rg -t sh --files | xargs shellcheck
-      - name: Run bashate
-        if: startsWith(runner.os, 'Linux')
-        run: rg -t sh --files | xargs bashate -i E006
       - name: Run with fixit
         if: startsWith(runner.os, 'Linux')
         run: python -u -m fixit lint
@@ -119,6 +95,31 @@ jobs:
       - name: Run pyright
         if: startsWith(runner.os, 'Linux')
         run: python -u -m pyright
+
+      - name: Install OS prerequisites
+        if: startsWith(runner.os, 'Linux')
+        run: sudo apt-get update ; sudo apt-get install ripgrep
+      - name: Search for existing linter ignore lines in Python
+        if: startsWith(runner.os, 'Linux')
+        run: |
+          rg -t py --stats "(?:(?:flake8|noqa|pylint|pyright|type): *(?:disable|ignore|noqa|[a-zA-Z]+[0-9]+)| Any|REPLACEME)" \
+            $(find . -type f -name "*.py" -not -path "./build/lib/*" ! -name "conf_correct.py") || true
+      - name: Ensure we are not increasing the number of ignore lines as a guideline
+        if: startsWith(runner.os, 'Linux')
+        run: |
+          if [ $(rg -t py --stats \
+                    "(?:(?:flake8|noqa|pylint|pyright|type): *(?:disable|ignore|noqa|[a-zA-Z]+[0-9]+)| Any|REPLACEME)" \
+                    $(find . -type f -name "*.py" -not -path "./build/lib/*" ! -name "conf_correct.py") \
+                      | awk "/ matches/ && "\!"/ contained matches/" \
+                      | cut -d " " -f1) -lt 3 ] ;
+          then exit 0 ; else exit 1 ; fi ;
+      - name: Run shellcheck
+        if: startsWith(runner.os, 'Linux')
+        run: rg -t sh --files | xargs shellcheck
+      - name: Run bashate
+        if: startsWith(runner.os, 'Linux')
+        run: rg -t sh --files | xargs bashate -i E006
+
       - name: Run tools using pytest
         run: |
           python -u -m pytest --black --cov --mypy --pylint --ruff
