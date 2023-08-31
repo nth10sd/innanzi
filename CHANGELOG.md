@@ -1,3 +1,11 @@
+## 2.1.0 (2023-08-30)
+
+1. Make sure `sphinx` tries to generate docs first, then fail on CI when docs contain sphinx errors
+1. Switch `ruff` to select all rules automatically to run, instead of manually specifying each category
+1. Revert `python_files` setting to the default and add `--strict-markers` to `addopts`
+1. Switch back to `pytest-instafail` and add `--instafail` to `pytest` run command
+1. Bump `pyright` to 1.1.324, `ruff` to 0.0.286, `semgrep` to 1.37.0, `sphinx` to 7.2.4 and `vulture` to 2.9.1
+
 ## 2.0.4 (2023-08-20)
 
 1. Bump `pandas` to 2.0.3 and `pandas-stubs` to 2.0.2.230605
